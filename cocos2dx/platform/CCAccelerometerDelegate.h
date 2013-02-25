@@ -37,6 +37,7 @@ public:
     double x;
     double y;
     double z;
+	double g;
 };
 
 /**

@@ -76,6 +76,7 @@ static AccelerometerDispatcher* s_pAccelerometerDispatcher;
     if (delegate_)
     {
 		__block CMMotionManager *motionManager = self.motionManager;
+		[self.motionManager startGyroUpdates];
 		[self.motionManager startAccelerometerUpdatesToQueue:self.motionManagerOperationQueue
 												 withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
 													 if (error)
@@ -91,6 +92,7 @@ static AccelerometerDispatcher* s_pAccelerometerDispatcher;
 													 acceleration_->x = acceleration.x;
 													 acceleration_->y = acceleration.y;
 													 acceleration_->z = acceleration.z;
+													 acceleration_->g = -motionManager.gyroData.rotationRate.y;
 													 
 													 double tmp = acceleration_->x;
 													 
@@ -99,16 +101,19 @@ static AccelerometerDispatcher* s_pAccelerometerDispatcher;
 														 case UIInterfaceOrientationLandscapeRight:
 															 acceleration_->x = -acceleration_->y;
 															 acceleration_->y = tmp;
+															 acceleration_->g = motionManager.gyroData.rotationRate.x;
 															 break;
 															 
 														 case UIInterfaceOrientationLandscapeLeft:
 															 acceleration_->x = acceleration_->y;
 															 acceleration_->y = -tmp;
+															 acceleration_->g = -motionManager.gyroData.rotationRate.x;
 															 break;
 															 
 														 case UIInterfaceOrientationPortraitUpsideDown:
 															 acceleration_->x = -acceleration_->y;
 															 acceleration_->y = -tmp;
+															 acceleration_->g = motionManager.gyroData.rotationRate.y;
 															 break;
 															 
 														 case UIInterfaceOrientationPortrait:
@@ -120,6 +125,7 @@ static AccelerometerDispatcher* s_pAccelerometerDispatcher;
     }
     else 
     {
+		[self.motionManager stopGyroUpdates];
 		[self.motionManager stopAccelerometerUpdates];
     }
 }
@@ -127,6 +133,7 @@ static AccelerometerDispatcher* s_pAccelerometerDispatcher;
 -(void) setAccelerometerInterval:(float)interval
 {
 	[self.motionManager setAccelerometerUpdateInterval:interval];
+	[self.motionManager setGyroUpdateInterval:interval];
 }
 
 @end
