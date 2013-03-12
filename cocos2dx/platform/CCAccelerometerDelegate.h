@@ -38,6 +38,8 @@ public:
     double y;
     double z;
 	double g;
+
+	double timestamp;
 };
 
 /**

@@ -93,6 +93,7 @@ static AccelerometerDispatcher* s_pAccelerometerDispatcher;
 													 acceleration_->y = acceleration.y;
 													 acceleration_->z = acceleration.z;
 													 acceleration_->g = -motionManager.gyroData.rotationRate.y;
+													 acceleration_->timestamp = accelerometerData.timestamp;
 													 
 													 double tmp = acceleration_->x;
 													 
