@@ -200,7 +200,8 @@ public:
 	void debugProcessInput(string str);
 	void enableDebugger();
 	JSObject* getDebugGlobal() { return debugGlobal_; }
-
+    JSObject* getGlobalObject() { return global_; }
+    
  private:
     void string_report(jsval val);
 };
@@ -272,11 +273,7 @@ public:
 	}
 	void set(jsval val, JSContext* cx) {
 		if (val.isString()) {
-			string = val.toString();
-			if (!cx) {
-				cx = ScriptingCore::getInstance()->getGlobalContext();
-			}
-			buffer = JS_EncodeString(cx, string);
+			this->set(val.toString(), cx);
 		} else {
 			buffer = NULL;
 		}
@@ -286,7 +283,7 @@ public:
 		if (!cx) {
 			cx = ScriptingCore::getInstance()->getGlobalContext();
 		}
-		buffer = JS_EncodeString(cx, string);
+        buffer = JS_EncodeString(cx, string);
 	}
 	std::string get() {
         return buffer;
@@ -298,6 +295,10 @@ public:
 	operator char*() {
 		return (char*)buffer;
 	}
+private:
+	/* Copy and assignment are not supported. */
+    JSStringWrapper(const JSStringWrapper &another);
+    JSStringWrapper &operator=(const JSStringWrapper &another);
 };
 
 JSBool jsb_set_reserved_slot(JSObject *obj, uint32_t idx, jsval value);
