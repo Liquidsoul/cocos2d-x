@@ -111,6 +111,24 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 		this.mGLSurfaceView.queueEvent(pRunnable);
 	}
 
+	@Override
+	public boolean getKeepScreenOn()
+	{
+		return this.mGLSurfaceView.getKeepScreenOn();
+	}
+
+	@Override
+	public void setKeepScreenOn(final boolean keepScreenOn)
+	{
+		final Cocos2dxActivity activity = this;
+		this.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				activity.mGLSurfaceView.setKeepScreenOn(keepScreenOn);
+			}
+		});
+	}
+
 	// ===========================================================
 	// Methods
 	// ===========================================================

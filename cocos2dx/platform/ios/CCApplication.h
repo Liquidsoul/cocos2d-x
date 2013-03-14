@@ -66,6 +66,10 @@ public:
      */
     virtual TargetPlatform getTargetPlatform();
 
+	virtual bool getKeepScreenOn();
+
+	virtual void setKeepScreenOn(bool keepScreenOn);
+
 protected:
     static CCApplication * sm_pSharedApplication;
 };

@@ -69,6 +69,9 @@ public:
      */
     virtual TargetPlatform getTargetPlatform();
 
+    virtual bool getKeepScreenOn();
+    virtual void setKeepScreenOn(bool keepScreenOn);
+
     /**
      *  Sets the Resource root path.
      *  @deprecated Please use CCFileUtils::sharedFileUtils()->setSearchPaths() instead.

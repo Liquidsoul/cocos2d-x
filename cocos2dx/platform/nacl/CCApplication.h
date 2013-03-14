@@ -63,6 +63,10 @@ public:
     virtual TargetPlatform getTargetPlatform();
 
     static bool isRunning() { return s_running; }
+
+    virtual bool getKeepScreenOn();
+    virtual void setKeepScreenOn(bool keepScreenOn);
+
 protected:
     long m_nAnimationInterval;  // microseconds
 

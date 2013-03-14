@@ -160,4 +160,13 @@ const std::string& CCApplication::getStartupScriptFilename(void)
     return m_startupScriptFilename;
 }
 
+bool CCApplication::getKeepScreenOn()
+{
+    return false;
+}
+
+void CCApplication::setKeepScreenOn(bool keepScreenOn)
+{
+}
+
 NS_CC_END

@@ -38,6 +38,8 @@ extern std::string getFileDirectoryJNI();
 extern void enableAccelerometerJNI();
 extern void disableAccelerometerJNI();
 extern void setAccelerometerIntervalJNI(float interval);
+extern void setKeepScreenOn(bool keepScreenOn);
+extern bool getKeepScreenOn();
 // functions for CCUserDefault
 extern bool getBoolForKeyJNI(const char* pKey, bool defaultValue);
 extern int getIntegerForKeyJNI(const char* pKey, int defaultValue);

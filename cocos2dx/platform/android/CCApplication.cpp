@@ -124,4 +124,15 @@ TargetPlatform CCApplication::getTargetPlatform()
     return kTargetAndroid;
 }
 
+bool CCApplication::getKeepScreenOn()
+{
+    return ::getKeepScreenOn();
+}
+
+void CCApplication::setKeepScreenOn(bool keepScreenOn)
+{
+    CCLOG("CCApplication::setKeepScreenOn(%d)\n", keepScreenOn);
+    ::setKeepScreenOn(keepScreenOn);
+}
+
 NS_CC_END

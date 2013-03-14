@@ -61,6 +61,18 @@ public:
      @brief Get target platform
      */
     virtual TargetPlatform getTargetPlatform() = 0;
+
+	/**
+	 @brief		Get the information if screen must be kept on.
+	 @return	true if the screen will be kept on.
+	 */
+	virtual bool getKeepScreenOn() = 0;
+
+	/**
+	 @brief		Set if the screen must be kept on.
+	 @param		keepScreenOn true to keep the screen on all the time.
+	 */
+	virtual void setKeepScreenOn(bool keepScreenOn) = 0;
 };
 
 // end of platform group

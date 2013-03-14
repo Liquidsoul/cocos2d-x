@@ -169,4 +169,13 @@ ccLanguageType CCApplication::getCurrentLanguage()
     return ret_language;
 }
 
+bool CCApplication::getKeepScreenOn()
+{
+    return false;
+}
+
+void CCApplication::setKeepScreenOn(bool keepScreenOn)
+{
+}
+
 NS_CC_END;

@@ -180,6 +180,31 @@ void disableAccelerometerJNI() {
     }
 }
 
+void setKeepScreenOn(bool keepScreenOn)
+{
+    JniMethodInfo t;
+
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "setKeepScreenOn", "(Z)V"))
+    {
+        t.env->CallStaticVoidMethod(t.classID, t.methodID, keepScreenOn);
+        t.env->DeleteLocalRef(t.classID);
+    }
+}
+
+bool getKeepScreenOn()
+{
+    JniMethodInfo t;
+
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "getKeepScreenOn", "()Z"))
+    {
+        jboolean ret = t.env->CallStaticBooleanMethod(t.classID, t.methodID);
+        t.env->DeleteLocalRef(t.classID);
+
+        return ret;
+    }
+    return false;
+}
+
 // functions for CCUserDefault
 bool getBoolForKeyJNI(const char* pKey, bool defaultValue)
 {

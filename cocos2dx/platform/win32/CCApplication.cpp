@@ -161,6 +161,15 @@ TargetPlatform CCApplication::getTargetPlatform()
     return kTargetWindows;
 }
 
+bool CCApplication::getKeepScreenOn()
+{
+    return false;
+}
+
+void CCApplication::setKeepScreenOn(bool keepScreenOn)
+{
+}
+
 void CCApplication::setResourceRootPath(const std::string& rootResDir)
 {
     m_resourceRootPath = rootResDir;

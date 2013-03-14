@@ -57,6 +57,10 @@ public:
      @brief Get target platform
      */
     virtual TargetPlatform getTargetPlatform();
+
+    virtual bool getKeepScreenOn();
+    virtual void setKeepScreenOn(bool keepScreenOn);
+
 protected:
     long       m_nAnimationInterval;  //micro second
     std::string m_resourceRootPath;

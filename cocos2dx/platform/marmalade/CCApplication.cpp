@@ -224,6 +224,13 @@ TargetPlatform CCApplication::getTargetPlatform()	// MH: Cocos2dx 2.0.3 added th
 	return kTargetWindows;				// TODO: TargetPlatform contains no definition for unsupported platform
 }
 
+bool CCApplication::getKeepScreenOn()
+{
+    return false;
+}
 
+void CCApplication::setKeepScreenOn(bool keepScreenOn)
+{
+}
 
 NS_CC_END;

@@ -271,6 +271,16 @@ public class Cocos2dxHelper {
 		return -1;
     }
     
+    public static boolean getKeepScreenOn()
+    {
+        return sCocos2dxHelperListener.getKeepScreenOn();
+    }
+
+    public static void setKeepScreenOn(final boolean keepScreenOn)
+    {
+        sCocos2dxHelperListener.setKeepScreenOn(keepScreenOn);
+    }
+
     // ===========================================================
  	// Functions for CCUserDefault
  	// ===========================================================
@@ -344,6 +354,9 @@ public class Cocos2dxHelper {
 	public static interface Cocos2dxHelperListener {
 		public void showDialog(final String pTitle, final String pMessage);
 		public void showEditTextDialog(final String pTitle, final String pMessage, final int pInputMode, final int pInputFlag, final int pReturnType, final int pMaxLength);
+
+		public boolean getKeepScreenOn();
+		public void setKeepScreenOn(boolean keepScreenOn);
 
 		public void runOnGLThread(final Runnable pRunnable);
 	}

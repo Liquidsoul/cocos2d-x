@@ -135,4 +135,14 @@ TargetPlatform CCApplication::getTargetPlatform()
     }
 }
 
+bool CCApplication::getKeepScreenOn()
+{
+	return (YES == [UIApplication sharedApplication].idleTimerDisabled);
+}
+
+void CCApplication::setKeepScreenOn(bool keepScreenOn)
+{
+	[UIApplication sharedApplication].idleTimerDisabled = keepScreenOn;
+}
+
 NS_CC_END
